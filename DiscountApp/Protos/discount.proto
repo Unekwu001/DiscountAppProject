@@ -1,0 +1,28 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "App";
+
+package discount;
+
+service DiscountService {
+    rpc GenerateCodes (GenerateRequest) returns (GenerateResponse);
+    rpc UseCode (UseCodeRequest) returns (UseCodeResponse);
+}
+
+message GenerateRequest {
+    uint32 count = 1;
+    uint32 length = 2;
+}
+
+message GenerateResponse {
+    bool result = 1;
+    repeated string codes = 2;
+}
+
+message UseCodeRequest {
+    string code = 1;
+}
+
+message UseCodeResponse {
+    int32 result = 1;
+}
